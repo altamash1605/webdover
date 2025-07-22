@@ -1,9 +1,8 @@
-// src/app/layout.tsx
+// app/layout.tsx
 import './globals.css'
 import { ReactNode } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-
 
 export const metadata = {
   title: 'Webdover | Your Name',
@@ -15,12 +14,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>
   )
 }
-

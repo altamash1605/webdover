@@ -3,11 +3,8 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import projects, { Project } from '@/data/projects'
 
-export const generateStaticParams = () => {
-  return projects.map((p: Project) => ({
-    slug: p.slug,
-  }))
-}
+export const generateStaticParams = () =>
+  projects.map((p: Project) => ({ slug: p.slug }))
 
 export default function ProjectPage({
   params,
@@ -31,7 +28,7 @@ export default function ProjectPage({
           className="rounded-lg object-cover"
         />
         <p className="text-gray-700">{project.description}</p>
-        {/* TODO: Add more case-study details here (Problem → Solution → Result) */}
+        {/* TODO: add more case-study details */}
       </div>
     </article>
   )
