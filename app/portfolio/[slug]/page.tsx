@@ -3,17 +3,19 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import projects, { Project } from '@/data/projects'
 
-interface Params {
-  params: { slug: string }
-}
-
-export function generateStaticParams() {
+export const generateStaticParams = () => {
   return projects.map((p: Project) => ({
     slug: p.slug,
   }))
 }
 
-export default function ProjectPage({ params }: Params) {
+export default function ProjectPage({
+  params,
+  searchParams,
+}: {
+  params: { slug: string }
+  searchParams: Record<string, string | string[] | undefined>
+}) {
   const project = projects.find((p) => p.slug === params.slug)
   if (!project) return notFound()
 
@@ -29,7 +31,7 @@ export default function ProjectPage({ params }: Params) {
           className="rounded-lg object-cover"
         />
         <p className="text-gray-700">{project.description}</p>
-        {/* TODO: Add more case-study details here: problem, solution, result */}
+        {/* TODO: Add more case-study details here (Problem → Solution → Result) */}
       </div>
     </article>
   )
