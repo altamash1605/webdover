@@ -6,13 +6,11 @@ import projects, { Project } from '@/data/projects'
 export const generateStaticParams = () =>
   projects.map((p: Project) => ({ slug: p.slug }))
 
-export default function ProjectPage({
-  params,
-  searchParams,
-}: {
+interface ProjectPageProps {
   params: { slug: string }
-  searchParams: Record<string, string | string[] | undefined>
-}) {
+}
+
+export default function ProjectPage({ params }: ProjectPageProps) {
   const project = projects.find((p) => p.slug === params.slug)
   if (!project) return notFound()
 
@@ -28,7 +26,7 @@ export default function ProjectPage({
           className="rounded-lg object-cover"
         />
         <p className="text-gray-700">{project.description}</p>
-        {/* TODO: add more case-study details */}
+        {/* TODO: Add more case-study details here (Problem → Solution → Result) */}
       </div>
     </article>
   )
