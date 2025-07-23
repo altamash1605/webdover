@@ -26,7 +26,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           className="rounded-lg object-cover"
         />
         <p className="text-gray-700">{project.description}</p>
-        {/* TODO: Add more case-study details here (Problem → Solution → Result) */}
+        {/* TODO: Add Problem → Solution → Results */}
       </div>
     </article>
   )
