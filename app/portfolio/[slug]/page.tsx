@@ -1,33 +1,18 @@
 // app/portfolio/[slug]/page.tsx
-import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import projects, { Project } from '@/data/projects'
+import { PageProps } from 'next'
 
-export const generateStaticParams = () =>
-  projects.map((p: Project) => ({ slug: p.slug }))
+type Params = { slug: string }
 
-interface ProjectPageProps {
-  params: { slug: string }
-}
+export default function ProjectPage({ params }: PageProps<Params>) {
+  const { slug } = params
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects.find((p) => p.slug === params.slug)
-  if (!project) return notFound()
+  // fetch your data here if you need, e.g.
+  // const project = await fetchProject(slug)
 
   return (
-    <article className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 space-y-8">
-        <h1 className="text-4xl font-bold">{project.title}</h1>
-        <Image
-          src={project.cover}
-          alt={project.title}
-          width={800}
-          height={450}
-          className="rounded-lg object-cover"
-        />
-        <p className="text-gray-700">{project.description}</p>
-        {/* TODO: Add Problem → Solution → Results */}
-      </div>
-    </article>
+    <main className="max-w-3xl mx-auto py-12">
+      <h1 className="text-4xl font-bold mb-6">Project: {slug}</h1>
+      {/* …your project details UI… */}
+    </main>
   )
 }
