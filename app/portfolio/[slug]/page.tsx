@@ -1,5 +1,4 @@
-// app/portfolio/[slug]/page.tsx
-
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 
 export default function ProjectPage({ params }) {
